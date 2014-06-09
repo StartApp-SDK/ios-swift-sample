@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         sdk.appID = "your app Id"
         sdk.devID = "your developer id"
         sdk.preferences = STASDKPreferences.prefrencesWithAge(22, andGender: STAGender_Male)
-        
+         
         return true
     }
 
