@@ -7,7 +7,5 @@
 //
 
 /* Import of StartApp SDK header files */
-#import "STAStartAppSDK.h"
-#import "STAStartAppAd.h"
-#import "STABannerView.h"
-#import "STABannerSize.h"
+
+#import <StartApp/StartApp.h>

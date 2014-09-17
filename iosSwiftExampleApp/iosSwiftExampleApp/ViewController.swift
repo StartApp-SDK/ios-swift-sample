@@ -53,21 +53,22 @@ class ViewController: UIViewController, STADelegateProtocol {
         load the StartApp auto position banner, banner size will be assigned automatically by  StartApp
         NOTE: replace the ApplicationID and the PublisherID with your own IDs
         */
-        if !startAppBannerAuto {
+        if (startAppBannerAuto == nil) {
             startAppBannerAuto = STABannerView(size: STA_AutoAdSize, autoOrigin: STAAdOrigin_Bottom, withView: self.view, withDelegate: nil);
-            self.view.addSubview(startAppBannerAuto)
+            self.view.addSubview(startAppBannerAuto!)
         }
         
         /*
         load the StartApp fixed position banner - in (0, 200)
         NOTE: replace the ApplicationID and the PublisherID with your own IDs
         */
-        if !startAppBannerFixed {
+        if (startAppBannerFixed == nil) {
             startAppBannerFixed = STABannerView(size: STA_PortraitAdSize_320x50, origin: CGPointMake(0,200), withView: self.view, withDelegate: nil)
-            self.view.addSubview(startAppBannerFixed)
+            self.view.addSubview(startAppBannerFixed!)
         }
     }
 
+    // Rotating the banner for iOS is less than 8.0
     override func  didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation)  {
         // notify StartApp auto Banner orientation change
         startAppBannerAuto!.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
@@ -76,6 +77,15 @@ class ViewController: UIViewController, STADelegateProtocol {
         startAppBannerFixed!.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
         
         super.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
+    }
+    
+    // Rotating the banner for iOS greater than 8.0
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        // notify StartApp auto Banner orientation change
+        startAppBannerAuto!.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        startAppBannerFixed!.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
     
     @IBAction func showAd() {
@@ -125,6 +135,11 @@ class ViewController: UIViewController, STADelegateProtocol {
     // StartApp Ad is being displayed
     func didCloseAd(ad: STAAbstractAd) {
         println("StartApp Ad was closed")
+    }
+    
+    // StartApp Ad is being displayed
+    func didClickAd(ad: STAAbstractAd) {
+        println("StartApp Ad was clicked")
     }
     
     override func didReceiveMemoryWarning() {
