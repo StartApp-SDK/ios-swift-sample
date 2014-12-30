@@ -3,7 +3,7 @@
 //  StartAppAdSDK
 //
 //  Copyright (c) 2013 StartApp. All rights reserved.
-//  SDK version c
+//  SDK version 2.3.5
 
 #import <Foundation/Foundation.h>
 
@@ -22,11 +22,11 @@
 
 @end
 
-
 @interface STAUserLocation : NSObject
 @property  double latitude;
 @property  double longitude;
 @end
+
 
 // STAAdPreferences holds params specific to an ad
 @interface STAAdPreferences : NSObject
@@ -37,12 +37,8 @@
 @end
 
 
-
-
 @interface STAAbstractAd : NSObject
 
-@property (nonatomic, strong) STAAdPreferences *preferences;
-
-- (BOOL) isReady;   // always check if ready before calling showAd
+- (BOOL) isReady;
 
 @end

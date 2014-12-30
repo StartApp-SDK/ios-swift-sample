@@ -63,12 +63,17 @@ class ViewController: UIViewController, STADelegateProtocol {
         NOTE: replace the ApplicationID and the PublisherID with your own IDs
         */
         if (startAppBannerFixed == nil) {
-            startAppBannerFixed = STABannerView(size: STA_PortraitAdSize_320x50, origin: CGPointMake(0,200), withView: self.view, withDelegate: nil)
+            if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {
+                startAppBannerFixed = STABannerView(size: STA_PortraitAdSize_768x90, origin: CGPointMake(0,300), withView: self.view, withDelegate: nil)
+            } else {
+                startAppBannerFixed = STABannerView(size: STA_PortraitAdSize_320x50, origin: CGPointMake(0,200), withView: self.view, withDelegate: nil)
+            }
+
             self.view.addSubview(startAppBannerFixed!)
         }
     }
 
-    // Rotating the banner for iOS is less than 8.0
+    // Rotating the banner for iOS less than 8.0
     override func  didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation)  {
         // notify StartApp auto Banner orientation change
         startAppBannerAuto!.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
@@ -77,15 +82,6 @@ class ViewController: UIViewController, STADelegateProtocol {
         startAppBannerFixed!.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
         
         super.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
-    }
-    
-    // Rotating the banner for iOS greater than 8.0
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        // notify StartApp auto Banner orientation change
-        startAppBannerAuto!.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-        startAppBannerFixed!.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-        
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
     
     @IBAction func showAd() {

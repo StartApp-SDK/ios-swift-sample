@@ -20,7 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         sdk.appID = "your app Id"
         sdk.devID = "your developer id"
         sdk.preferences = STASDKPreferences.prefrencesWithAge(22, andGender: STAGender_Male)
-         
+        
+        var splashPreferences : STASplashPreferences = STASplashPreferences()
+        splashPreferences.splashMode = STASplashModeTemplate
+        splashPreferences.splashTemplateTheme = STASplashTemplateThemeOcean;
+        splashPreferences.splashLoadingIndicatorType = STASplashLoadingIndicatorTypeDots;
+        splashPreferences.splashTemplateIconImageName = "StartAppIcon";
+        splashPreferences.splashTemplateAppName = "StartApp Example App";
+        
+        sdk.showSplashAdWithPreferences(splashPreferences)
+
         return true
     }
 

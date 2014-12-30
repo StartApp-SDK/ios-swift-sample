@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment version="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,11 +15,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uDl-g3-W9H">
-                                <rect key="frame" x="125" y="155" width="231" height="30"/>
+                                <rect key="frame" x="185" y="78" width="231" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="231" id="dM0-6O-uuh"/>
                                 </constraints>
@@ -31,7 +31,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQW-fw-kCR">
-                                <rect key="frame" x="146" y="106" width="189" height="30"/>
+                                <rect key="frame" x="206" y="29" width="189" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="189" id="lwo-Af-hDi"/>
                                 </constraints>
@@ -42,44 +42,115 @@
                                     <action selector="showAd" destination="BYZ-38-t0r" eventType="touchUpInside" id="1rU-WA-MCj"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="startapp_logo" translatesAutoresizingMaskIntoConstraints="NO" id="vT6-iJ-6ve">
-                                <rect key="frame" x="178" y="51" width="124" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="vT6-iJ-6ve" secondAttribute="height" multiplier="31:9" id="upp-Wo-uFM"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="upp-Wo-uFM"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="178" y="51" width="124" height="36"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="upp-Wo-uFM"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63g-we-s7A">
+                                <rect key="frame" x="219" y="123" width="163" height="30"/>
+                                <state key="normal" title="Native Ads Example">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="ZzZ-a0-JNm" kind="presentation" id="4Lb-f2-pQh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vT6-iJ-6ve" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="31" id="0E1-WF-S0Z"/>
+                            <constraint firstAttribute="centerX" secondItem="dQW-fw-kCR" secondAttribute="centerX" constant="-0.5" id="43x-Tl-hom"/>
                             <constraint firstItem="uDl-g3-W9H" firstAttribute="top" secondItem="dQW-fw-kCR" secondAttribute="bottom" constant="19" id="7rI-ME-FRl"/>
-                            <constraint firstItem="dQW-fw-kCR" firstAttribute="top" secondItem="vT6-iJ-6ve" secondAttribute="bottom" constant="19" id="HDu-Wq-bdU"/>
-                            <constraint firstItem="vT6-iJ-6ve" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WIr-z8-WMu"/>
-                            <constraint firstItem="vT6-iJ-6ve" firstAttribute="centerX" secondItem="uDl-g3-W9H" secondAttribute="centerX" id="jVX-UR-prO"/>
-                            <constraint firstItem="dQW-fw-kCR" firstAttribute="centerX" secondItem="uDl-g3-W9H" secondAttribute="centerX" id="xk2-Up-QpY"/>
+                            <constraint firstItem="63g-we-s7A" firstAttribute="top" secondItem="uDl-g3-W9H" secondAttribute="bottom" constant="15" id="Y6W-ik-H2f"/>
+                            <constraint firstItem="dQW-fw-kCR" firstAttribute="centerX" secondItem="uDl-g3-W9H" secondAttribute="centerX" id="aey-oa-lQ5"/>
+                            <constraint firstItem="dQW-fw-kCR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="9" id="lYi-Us-Td8"/>
+                            <constraint firstItem="63g-we-s7A" firstAttribute="centerX" secondItem="uDl-g3-W9H" secondAttribute="centerX" id="yIi-t5-w0O"/>
                         </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="524" y="374"/>
         </scene>
+        <!--Native View Controller-->
+        <scene sceneID="nrB-bl-NRk">
+            <objects>
+                <viewController id="ZzZ-a0-JNm" customClass="NativeViewController" customModule="iosSwiftExampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IfZ-Aa-XkI"/>
+                        <viewControllerLayoutGuide type="bottom" id="uua-mf-84X"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="X3V-9B-Cdt">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j21-xc-dKx">
+                                <rect key="frame" x="16" y="20" width="46" height="30"/>
+                                <state key="normal" title="Close">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismiss:" destination="ZzZ-a0-JNm" eventType="touchUpInside" id="QKj-oY-Ugv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyl-3s-4Hk">
+                                <rect key="frame" x="16" y="76" width="66" height="30"/>
+                                <state key="normal" title="Load Ad">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loadAd:" destination="ZzZ-a0-JNm" eventType="touchUpInside" id="LiN-Zj-osZ"/>
+                                </connections>
+                            </button>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="79b-k5-Y1g">
+                                <rect key="frame" x="16" y="130" width="100" height="100"/>
+                            </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHT-GM-LZ2">
+                                <rect key="frame" x="199" y="165" width="78" height="30"/>
+                                <state key="normal" title="Click Ad">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickAd:" destination="ZzZ-a0-JNm" eventType="touchUpInside" id="FS9-dk-IQk"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k62-YE-qKR">
+                                <rect key="frame" x="16" y="245" width="261" height="37"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sa9-rr-uap">
+                                <rect key="frame" x="199" y="76" width="78" height="30"/>
+                                <state key="normal" title="Show Ad">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showAd:" destination="ZzZ-a0-JNm" eventType="touchUpInside" id="ysJ-1w-5r6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="k62-YE-qKR" firstAttribute="top" secondItem="79b-k5-Y1g" secondAttribute="bottom" constant="15" id="3MD-kc-wbZ"/>
+                            <constraint firstItem="Sa9-rr-uap" firstAttribute="top" secondItem="j21-xc-dKx" secondAttribute="bottom" constant="26" id="FwX-Eb-VBd"/>
+                            <constraint firstItem="79b-k5-Y1g" firstAttribute="leading" secondItem="fyl-3s-4Hk" secondAttribute="leading" id="TBb-vZ-oRs"/>
+                            <constraint firstItem="ZHT-GM-LZ2" firstAttribute="leading" secondItem="Sa9-rr-uap" secondAttribute="leading" id="XUp-ui-Uhx"/>
+                            <constraint firstItem="ZHT-GM-LZ2" firstAttribute="top" secondItem="Sa9-rr-uap" secondAttribute="bottom" constant="59" id="ZKe-8j-c2M"/>
+                            <constraint firstItem="Sa9-rr-uap" firstAttribute="leading" secondItem="fyl-3s-4Hk" secondAttribute="trailing" constant="117" id="aWi-Dp-KDC"/>
+                            <constraint firstItem="fyl-3s-4Hk" firstAttribute="top" secondItem="j21-xc-dKx" secondAttribute="bottom" constant="26" id="cOh-Ow-eVh"/>
+                            <constraint firstItem="79b-k5-Y1g" firstAttribute="leading" secondItem="k62-YE-qKR" secondAttribute="leading" id="hKP-ZD-Stf"/>
+                            <constraint firstItem="j21-xc-dKx" firstAttribute="leading" secondItem="X3V-9B-Cdt" secondAttribute="leadingMargin" id="mkT-Jf-vlQ"/>
+                            <constraint firstItem="fyl-3s-4Hk" firstAttribute="leading" secondItem="j21-xc-dKx" secondAttribute="leading" id="sBJ-HZ-VeL"/>
+                            <constraint firstItem="79b-k5-Y1g" firstAttribute="top" secondItem="fyl-3s-4Hk" secondAttribute="bottom" constant="24" id="sjm-LV-KMD"/>
+                            <constraint firstItem="j21-xc-dKx" firstAttribute="top" secondItem="IfZ-Aa-XkI" secondAttribute="bottom" id="zPx-XW-oGF"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="adImageView" destination="79b-k5-Y1g" id="QSJ-Rb-Qum"/>
+                        <outlet property="adTitle" destination="k62-YE-qKR" id="2hz-bp-vmL"/>
+                        <outlet property="clickAdButton" destination="ZHT-GM-LZ2" id="vB3-qq-ZPU"/>
+                        <outlet property="showAdButton" destination="Sa9-rr-uap" id="DTh-LB-aDp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ad1-LD-yVi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1305" y="374"/>
+        </scene>
     </scenes>
-    <resources>
-        <image name="startapp_logo" width="124" height="36"/>
-    </resources>
 </document>
