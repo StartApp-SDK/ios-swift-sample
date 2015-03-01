@@ -4,7 +4,7 @@
 //
 //  Created by StartApp on 3/13/14.
 //  Copyright (c) 2014 StartApp. All rights reserved.
-//  SDK version 2.3.5
+//  SDK version 2.4.0
 
 #import <Foundation/Foundation.h>
 #import "STAStartAppAd.h"
@@ -13,6 +13,7 @@
 // STAAdPreferences holds params specific to an ad
 @interface STASDKPreferences : NSObject
 @property (nonatomic,assign) NSUInteger age;
+@property (nonatomic,strong) NSString* ageStr;
 
 typedef enum {
 	STAGender_Undefined = 0,
@@ -22,6 +23,7 @@ typedef enum {
 @property (nonatomic, assign) STAGender gender;
 
 + (instancetype)prefrencesWithAge:(NSUInteger)age andGender:(STAGender)gender;
++ (instancetype)prefrencesWithAgeStr:(NSString *)ageStr andGender:(STAGender)gender;
 
 @end
 

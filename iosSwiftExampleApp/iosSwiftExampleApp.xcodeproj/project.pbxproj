@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		504CA5F81AA3330A00C0DD95 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 504CA5F71AA3330A00C0DD95 /* libz.dylib */; };
 		506C10ED19407F840015E07A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506C10EC19407F840015E07A /* AppDelegate.swift */; };
 		506C10EF19407F840015E07A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506C10EE19407F840015E07A /* ViewController.swift */; };
 		506C10F219407F840015E07A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 506C10F019407F840015E07A /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		504CA5F71AA3330A00C0DD95 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		505DF16619449D0F00FE7E73 /* iosSwiftExampleApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iosSwiftExampleApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		506C10E719407F840015E07A /* iosSwiftExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosSwiftExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		506C10EB19407F840015E07A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -44,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				504CA5F81AA3330A00C0DD95 /* libz.dylib in Frameworks */,
 				506C111C1940A20D0015E07A /* AdSupport.framework in Frameworks */,
 				506C111A1940A2070015E07A /* StoreKit.framework in Frameworks */,
 				506C11181940A2000015E07A /* CoreGraphics.framework in Frameworks */,
@@ -68,6 +71,7 @@
 		506C10DE19407F840015E07A = {
 			isa = PBXGroup;
 			children = (
+				504CA5F71AA3330A00C0DD95 /* libz.dylib */,
 				505DF16A1944A43500FE7E73 /* StartApp SDK */,
 				506C111B1940A20D0015E07A /* AdSupport.framework */,
 				506C11191940A2070015E07A /* StoreKit.framework */,
