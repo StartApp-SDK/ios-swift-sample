@@ -98,7 +98,7 @@ class ViewController: UIViewController, STADelegateProtocol {
     @IBAction func loadShowAd() {
         // load StartApp ad with Automatic AdType and self view controller
         // as a delegation for callbacks
-        startAppAdLoadShow!.loadAd(STAAdType_Automatic, withDelegate: self)
+        startAppAdLoadShow!.loadAdWithDelegate(self);
     }
     
     /*
