@@ -13,8 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
-        
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    
         // initialize the SDK with your appID and devID
         var sdk: STAStartAppSDK = STAStartAppSDK.sharedInstance();
         sdk.appID = "your app Id"
