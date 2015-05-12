@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		504CA5F81AA3330A00C0DD95 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 504CA5F71AA3330A00C0DD95 /* libz.dylib */; };
-		505F40E61AEFA79D00E6F04C /* StartApp.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 505F40E41AEFA79D00E6F04C /* StartApp.bundle */; };
-		505F40E71AEFA79D00E6F04C /* StartApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505F40E51AEFA79D00E6F04C /* StartApp.framework */; };
 		506C10ED19407F840015E07A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506C10EC19407F840015E07A /* AppDelegate.swift */; };
 		506C10EF19407F840015E07A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506C10EE19407F840015E07A /* ViewController.swift */; };
 		506C10F219407F840015E07A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 506C10F019407F840015E07A /* Main.storyboard */; };
@@ -19,14 +17,14 @@
 		506C11181940A2000015E07A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506C11171940A2000015E07A /* CoreGraphics.framework */; };
 		506C111A1940A2070015E07A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506C11191940A2070015E07A /* StoreKit.framework */; };
 		506C111C1940A20D0015E07A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506C111B1940A20D0015E07A /* AdSupport.framework */; };
+		509C15711B01EE7700370ABF /* StartApp.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 509C156F1B01EE7700370ABF /* StartApp.bundle */; };
+		509C15721B01EE7700370ABF /* StartApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509C15701B01EE7700370ABF /* StartApp.framework */; };
 		509C68071A52A7B3003ED178 /* NativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509C68061A52A7B3003ED178 /* NativeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		504CA5F71AA3330A00C0DD95 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		505DF16619449D0F00FE7E73 /* iosSwiftExampleApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iosSwiftExampleApp-Bridging-Header.h"; sourceTree = "<group>"; };
-		505F40E41AEFA79D00E6F04C /* StartApp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = StartApp.bundle; sourceTree = "<group>"; };
-		505F40E51AEFA79D00E6F04C /* StartApp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = StartApp.framework; sourceTree = "<group>"; };
 		506C10E719407F840015E07A /* iosSwiftExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosSwiftExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		506C10EB19407F840015E07A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		506C10EC19407F840015E07A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +36,8 @@
 		506C11171940A2000015E07A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		506C11191940A2070015E07A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		506C111B1940A20D0015E07A /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		509C156F1B01EE7700370ABF /* StartApp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = StartApp.bundle; sourceTree = "<group>"; };
+		509C15701B01EE7700370ABF /* StartApp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = StartApp.framework; sourceTree = "<group>"; };
 		509C68061A52A7B3003ED178 /* NativeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,7 +52,7 @@
 				506C11181940A2000015E07A /* CoreGraphics.framework in Frameworks */,
 				506C11161940A1F90015E07A /* SystemConfiguration.framework in Frameworks */,
 				506C11141940A1EE0015E07A /* CoreTelephony.framework in Frameworks */,
-				505F40E71AEFA79D00E6F04C /* StartApp.framework in Frameworks */,
+				509C15721B01EE7700370ABF /* StartApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,8 +62,8 @@
 		505DF16A1944A43500FE7E73 /* StartApp SDK */ = {
 			isa = PBXGroup;
 			children = (
-				505F40E41AEFA79D00E6F04C /* StartApp.bundle */,
-				505F40E51AEFA79D00E6F04C /* StartApp.framework */,
+				509C156F1B01EE7700370ABF /* StartApp.bundle */,
+				509C15701B01EE7700370ABF /* StartApp.framework */,
 			);
 			name = "StartApp SDK";
 			sourceTree = "<group>";
@@ -172,7 +172,7 @@
 			files = (
 				506C10F219407F840015E07A /* Main.storyboard in Resources */,
 				506C10F419407F840015E07A /* Images.xcassets in Resources */,
-				505F40E61AEFA79D00E6F04C /* StartApp.bundle in Resources */,
+				509C15711B01EE7700370ABF /* StartApp.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
