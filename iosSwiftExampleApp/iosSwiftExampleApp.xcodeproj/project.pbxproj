@@ -17,9 +17,11 @@
 		506C11181940A2000015E07A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506C11171940A2000015E07A /* CoreGraphics.framework */; };
 		506C111A1940A2070015E07A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506C11191940A2070015E07A /* StoreKit.framework */; };
 		506C111C1940A20D0015E07A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506C111B1940A20D0015E07A /* AdSupport.framework */; };
-		509C15711B01EE7700370ABF /* StartApp.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 509C156F1B01EE7700370ABF /* StartApp.bundle */; };
-		509C15721B01EE7700370ABF /* StartApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509C15701B01EE7700370ABF /* StartApp.framework */; };
 		509C68071A52A7B3003ED178 /* NativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509C68061A52A7B3003ED178 /* NativeViewController.swift */; };
+		509CD4E91B41835000DD6BA7 /* StartApp.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 509CD4E71B41835000DD6BA7 /* StartApp.bundle */; };
+		509CD4EA1B41835000DD6BA7 /* StartApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509CD4E81B41835000DD6BA7 /* StartApp.framework */; };
+		509CD4EC1B41836B00DD6BA7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509CD4EB1B41836B00DD6BA7 /* AVFoundation.framework */; };
+		509CD4F11B41842400DD6BA7 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509CD4ED1B41837400DD6BA7 /* CoreMedia.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,9 +38,12 @@
 		506C11171940A2000015E07A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		506C11191940A2070015E07A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		506C111B1940A20D0015E07A /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		509C156F1B01EE7700370ABF /* StartApp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = StartApp.bundle; sourceTree = "<group>"; };
-		509C15701B01EE7700370ABF /* StartApp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = StartApp.framework; sourceTree = "<group>"; };
 		509C68061A52A7B3003ED178 /* NativeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeViewController.swift; sourceTree = "<group>"; };
+		509CD4E71B41835000DD6BA7 /* StartApp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = StartApp.bundle; sourceTree = "<group>"; };
+		509CD4E81B41835000DD6BA7 /* StartApp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = StartApp.framework; sourceTree = "<group>"; };
+		509CD4EB1B41836B00DD6BA7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		509CD4ED1B41837400DD6BA7 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		509CD4EF1B4183E400DD6BA7 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,13 +51,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				509CD4F11B41842400DD6BA7 /* CoreMedia.framework in Frameworks */,
+				509CD4EC1B41836B00DD6BA7 /* AVFoundation.framework in Frameworks */,
 				504CA5F81AA3330A00C0DD95 /* libz.dylib in Frameworks */,
 				506C111C1940A20D0015E07A /* AdSupport.framework in Frameworks */,
 				506C111A1940A2070015E07A /* StoreKit.framework in Frameworks */,
 				506C11181940A2000015E07A /* CoreGraphics.framework in Frameworks */,
 				506C11161940A1F90015E07A /* SystemConfiguration.framework in Frameworks */,
 				506C11141940A1EE0015E07A /* CoreTelephony.framework in Frameworks */,
-				509C15721B01EE7700370ABF /* StartApp.framework in Frameworks */,
+				509CD4EA1B41835000DD6BA7 /* StartApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,8 +69,8 @@
 		505DF16A1944A43500FE7E73 /* StartApp SDK */ = {
 			isa = PBXGroup;
 			children = (
-				509C156F1B01EE7700370ABF /* StartApp.bundle */,
-				509C15701B01EE7700370ABF /* StartApp.framework */,
+				509CD4E71B41835000DD6BA7 /* StartApp.bundle */,
+				509CD4E81B41835000DD6BA7 /* StartApp.framework */,
 			);
 			name = "StartApp SDK";
 			sourceTree = "<group>";
@@ -71,6 +78,9 @@
 		506C10DE19407F840015E07A = {
 			isa = PBXGroup;
 			children = (
+				509CD4EF1B4183E400DD6BA7 /* MediaPlayer.framework */,
+				509CD4ED1B41837400DD6BA7 /* CoreMedia.framework */,
+				509CD4EB1B41836B00DD6BA7 /* AVFoundation.framework */,
 				504CA5F71AA3330A00C0DD95 /* libz.dylib */,
 				505DF16A1944A43500FE7E73 /* StartApp SDK */,
 				506C111B1940A20D0015E07A /* AdSupport.framework */,
@@ -172,7 +182,7 @@
 			files = (
 				506C10F219407F840015E07A /* Main.storyboard in Resources */,
 				506C10F419407F840015E07A /* Images.xcassets in Resources */,
-				509C15711B01EE7700370ABF /* StartApp.bundle in Resources */,
+				509CD4E91B41835000DD6BA7 /* StartApp.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
