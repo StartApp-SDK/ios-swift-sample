@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
         // initialize the SDK with your appID and devID
         var sdk: STAStartAppSDK = STAStartAppSDK.sharedInstance();
-        sdk.appID = "your app Id"
-        sdk.devID = "your developer id"
+        sdk.appID = "yourAppId"
+        sdk.devID = "yourDeveloperId"
         sdk.preferences = STASDKPreferences.prefrencesWithAge(22, andGender: STAGender_Male)
         
         var splashPreferences : STASplashPreferences = STASplashPreferences()
