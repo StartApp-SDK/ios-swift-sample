@@ -1,7 +1,7 @@
 StartApp InApp iOS Swift Example App
 ====================================
 
-*Updated to InApp SDK version 3.1.0*
+*Updated to InApp SDK version 3.4.3*
 
 This iOS application project provides an example of the StartApp InApp Swift SDK integration.
 
