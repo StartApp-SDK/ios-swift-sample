@@ -34,6 +34,11 @@ class ViewController: UIViewController, STADelegateProtocol {
     */
     var startAppBannerFixed: STABannerView?
     
+    /*
+     Declaration of StartApp Rewarded ad
+     */
+    var startAppRewarded: STAStartAppAd?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,6 +48,7 @@ class ViewController: UIViewController, STADelegateProtocol {
         */
         startAppAdAutoLoad = STAStartAppAd()
         startAppAdLoadShow = STAStartAppAd()
+        startAppRewarded = STAStartAppAd()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -66,9 +72,9 @@ class ViewController: UIViewController, STADelegateProtocol {
         
         if (startAppBannerFixed == nil) {
             if (UIDevice.current.userInterfaceIdiom == .pad) {
-                startAppBannerFixed = STABannerView(size: STA_PortraitAdSize_768x90, origin: CGPoint(x: 0,y: 300), with: self.view, withDelegate: nil)
+                startAppBannerFixed = STABannerView(size: STA_PortraitAdSize_768x90, origin: CGPoint(x: 0,y: 350), with: self.view, withDelegate: nil)
             } else {
-                startAppBannerFixed = STABannerView(size: STA_PortraitAdSize_320x50, origin: CGPoint(x: 0,y: 200), with: self.view, withDelegate: nil)
+                startAppBannerFixed = STABannerView(size: STA_PortraitAdSize_320x50, origin: CGPoint(x: 0,y: 350), with: self.view, withDelegate: nil)
             }
 
             self.view.addSubview(startAppBannerFixed!)
@@ -113,12 +119,21 @@ class ViewController: UIViewController, STADelegateProtocol {
     // StartApp Ad loaded successfully
     func didLoad(_ ad: STAAbstractAd) {
         print("StartApp Ad had been loaded successfully", terminator: "")
-        startAppAdLoadShow!.show()
+        
+        if (ad == startAppAdLoadShow) {
+            startAppAdLoadShow!.show()
+        } else if (ad == startAppRewarded) {
+            startAppRewarded!.show()
+        }
     }
     
     // StartApp Ad failed to load
     func failedLoad(_ ad: STAAbstractAd, withError error: Error) {
-        print("StartApp Ad had failed to load", terminator: "")
+        if (ad == startAppAdLoadShow) {
+            print("StartApp Ad had failed to load", terminator: "")
+        } else if (ad == startAppRewarded) {
+            print("StartApp rewarded video failed to load", terminator: "")
+        }
     }
     
     // StartApp Ad is being displayed
@@ -144,6 +159,16 @@ class ViewController: UIViewController, STADelegateProtocol {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func loadShowRewardedVideo() {
+        // load StartApp rewarded video
+        startAppRewarded!.loadRewardedVideoAd(withDelegate: self);
+    }
+    
+    // StartApp playing rewarded video has been completed
+    func didCompleteVideo(_ ad: STAAbstractAd) {
+        print("StartApp rewarded video had been completed", terminator: "")
     }
 }
 

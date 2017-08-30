@@ -1,9 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment version="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,57 +19,66 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uDl-g3-W9H">
-                                <rect key="frame" x="185" y="78" width="231" height="30"/>
+                                <rect key="frame" x="72.5" y="78" width="231" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="231" id="dM0-6O-uuh"/>
                                 </constraints>
                                 <state key="normal" title="Load &amp; Show (using delegate)">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="loadShowAd" destination="BYZ-38-t0r" eventType="touchUpInside" id="gCk-Su-Kzf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQW-fw-kCR">
-                                <rect key="frame" x="206" y="29" width="189" height="30"/>
+                                <rect key="frame" x="93.5" y="29" width="189" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="189" id="lwo-Af-hDi"/>
                                 </constraints>
                                 <state key="normal" title="Show Ad (recommended)">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="showAd" destination="BYZ-38-t0r" eventType="touchUpInside" id="1rU-WA-MCj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63g-we-s7A">
-                                <rect key="frame" x="219" y="123" width="163" height="30"/>
+                                <rect key="frame" x="107" y="136" width="163" height="30"/>
                                 <state key="normal" title="Native Ads Example">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="ZzZ-a0-JNm" kind="presentation" id="4Lb-f2-pQh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FLy-lz-EpV">
+                                <rect key="frame" x="77.566009104704108" y="185" width="217.99999999999997" height="30.000000000000057"/>
+                                <state key="normal" title="Load &amp; Show Rewarded Video"/>
+                                <connections>
+                                    <action selector="loadShowRewardedVideo" destination="BYZ-38-t0r" eventType="touchUpInside" id="6iW-5b-Qqb"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="dQW-fw-kCR" secondAttribute="centerX" constant="-0.5" id="43x-Tl-hom"/>
                             <constraint firstItem="uDl-g3-W9H" firstAttribute="top" secondItem="dQW-fw-kCR" secondAttribute="bottom" constant="19" id="7rI-ME-FRl"/>
                             <constraint firstItem="63g-we-s7A" firstAttribute="top" secondItem="uDl-g3-W9H" secondAttribute="bottom" constant="15" id="Y6W-ik-H2f"/>
                             <constraint firstItem="dQW-fw-kCR" firstAttribute="centerX" secondItem="uDl-g3-W9H" secondAttribute="centerX" id="aey-oa-lQ5"/>
+                            <constraint firstItem="FLy-lz-EpV" firstAttribute="top" secondItem="63g-we-s7A" secondAttribute="bottom" constant="19" id="i4P-J7-n0O"/>
                             <constraint firstItem="dQW-fw-kCR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="9" id="lYi-Us-Td8"/>
+                            <constraint firstItem="FLy-lz-EpV" firstAttribute="centerX" secondItem="63g-we-s7A" secondAttribute="centerX" id="nAe-r1-OiL"/>
                             <constraint firstItem="63g-we-s7A" firstAttribute="centerX" secondItem="uDl-g3-W9H" secondAttribute="centerX" id="yIi-t5-w0O"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="524" y="374"/>
+            <point key="canvasLocation" x="524" y="373.76311844077964"/>
         </scene>
         <!--Native View Controller-->
         <scene sceneID="nrB-bl-NRk">
@@ -76,13 +89,13 @@
                         <viewControllerLayoutGuide type="bottom" id="uua-mf-84X"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="X3V-9B-Cdt">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j21-xc-dKx">
                                 <rect key="frame" x="16" y="20" width="46" height="30"/>
                                 <state key="normal" title="Close">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="dismiss:" destination="ZzZ-a0-JNm" eventType="touchUpInside" id="QKj-oY-Ugv"/>
@@ -91,19 +104,19 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyl-3s-4Hk">
                                 <rect key="frame" x="16" y="76" width="66" height="30"/>
                                 <state key="normal" title="Load Ad">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="loadAd:" destination="ZzZ-a0-JNm" eventType="touchUpInside" id="LiN-Zj-osZ"/>
                                 </connections>
                             </button>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="79b-k5-Y1g">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="79b-k5-Y1g">
                                 <rect key="frame" x="16" y="130" width="100" height="100"/>
                             </imageView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHT-GM-LZ2">
                                 <rect key="frame" x="199" y="165" width="78" height="30"/>
                                 <state key="normal" title="Click Ad">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="clickAd:" destination="ZzZ-a0-JNm" eventType="touchUpInside" id="FS9-dk-IQk"/>
@@ -118,14 +131,14 @@
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sa9-rr-uap">
                                 <rect key="frame" x="199" y="76" width="78" height="30"/>
                                 <state key="normal" title="Show Ad">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="showAd:" destination="ZzZ-a0-JNm" eventType="touchUpInside" id="ysJ-1w-5r6"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="k62-YE-qKR" firstAttribute="top" secondItem="79b-k5-Y1g" secondAttribute="bottom" constant="15" id="3MD-kc-wbZ"/>
                             <constraint firstItem="Sa9-rr-uap" firstAttribute="top" secondItem="j21-xc-dKx" secondAttribute="bottom" constant="26" id="FwX-Eb-VBd"/>
