@@ -4,22 +4,24 @@
 //
 //  Created by StartApp on 3/13/14.
 //  Copyright (c) 2014 StartApp. All rights reserved.
-//  SDK version 3.1.0
+//  SDK version 3.4.3
 
 #import <Foundation/Foundation.h>
 #import "STAStartAppAd.h"
 #import "STASplashPreferences.h"
+
+
+typedef enum {
+    STAGender_Undefined = 0,
+    STAGender_Female = 1,
+    STAGender_Male=2
+} STAGender;
 
 // STAAdPreferences holds params specific to an ad
 @interface STASDKPreferences : NSObject
 @property (nonatomic,assign) NSUInteger age;
 @property (nonatomic,strong) NSString* ageStr;
 
-typedef enum {
-	STAGender_Undefined = 0,
-	STAGender_Female = 1,
-    STAGender_Male=2
-} STAGender;
 @property (nonatomic, assign) STAGender gender;
 
 + (instancetype)prefrencesWithAge:(NSUInteger)age andGender:(STAGender)gender;
@@ -50,11 +52,18 @@ typedef enum {
 - (void)showSplashAdWithDelegate:(id<STADelegateProtocol>)delegate withAdPreferences:(STAAdPreferences*) adPrefs withPreferences:(STASplashPreferences *)splashPreferences;
 - (void)showSplashAdWithDelegate:(id<STADelegateProtocol>)delegate withAdPreferences:(STAAdPreferences*) adPrefs withPreferences:(STASplashPreferences *)splashPreferences withAdTag:(NSString*)adTag;
 
+-(void)inAppPurchaseMade;
+-(void)inAppPurchaseMadeWithAmount:(float)amount;
+-(void)startNewSession;
+
+
 //Unity methods
 - (void)unitySDKInitialize;
 - (void)unityAppWillEnterForeground;
 - (void)unityAppDidEnterBackground;
 - (void)setUnitySupportedOrientations:(int)supportedOrientations;
+- (void)setUnityAutoRotation:(int)autoRotation;
+- (void)setUnityVersion:(NSString *)unityVersion;
 
 
 @property (readonly)  NSString* version;

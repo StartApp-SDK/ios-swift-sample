@@ -45,16 +45,17 @@ class ViewController: UIViewController, STADelegateProtocol {
         startAppAdLoadShow = STAStartAppAd()
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        startAppAdAutoLoad!.loadAd()
+        startAppAdAutoLoad!.load()
         
         /*
         load the StartApp auto position banner, banner size will be assigned automatically by  StartApp
         NOTE: replace the ApplicationID and the PublisherID with your own IDs
         */
+        
         if (startAppBannerAuto == nil) {
-            startAppBannerAuto = STABannerView(size: STA_AutoAdSize, autoOrigin: STAAdOrigin_Bottom, withView: self.view, withDelegate: nil);
+            startAppBannerAuto = STABannerView(size: STA_AutoAdSize, autoOrigin: STAAdOrigin_Bottom, with: self.view, withDelegate: nil);
             self.view.addSubview(startAppBannerAuto!)
         }
         
@@ -62,26 +63,28 @@ class ViewController: UIViewController, STADelegateProtocol {
         load the StartApp fixed position banner - in (0, 200)
         NOTE: replace the ApplicationID and the PublisherID with your own IDs
         */
+        
         if (startAppBannerFixed == nil) {
-            if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {
-                startAppBannerFixed = STABannerView(size: STA_PortraitAdSize_768x90, origin: CGPointMake(0,300), withView: self.view, withDelegate: nil)
+            if (UIDevice.current.userInterfaceIdiom == .pad) {
+                startAppBannerFixed = STABannerView(size: STA_PortraitAdSize_768x90, origin: CGPoint(x: 0,y: 300), with: self.view, withDelegate: nil)
             } else {
-                startAppBannerFixed = STABannerView(size: STA_PortraitAdSize_320x50, origin: CGPointMake(0,200), withView: self.view, withDelegate: nil)
+                startAppBannerFixed = STABannerView(size: STA_PortraitAdSize_320x50, origin: CGPoint(x: 0,y: 200), with: self.view, withDelegate: nil)
             }
 
             self.view.addSubview(startAppBannerFixed!)
         }
+ 
     }
 
     // Rotating the banner for iOS less than 8.0
-    override func  didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation)  {
+    override func  didRotate(from fromInterfaceOrientation: UIInterfaceOrientation)  {
         // notify StartApp auto Banner orientation change
-        startAppBannerAuto!.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
+        startAppBannerAuto!.didRotate(from: fromInterfaceOrientation)
         
         // notify StartApp fixed position Banner orientation change
-        startAppBannerFixed!.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
+        startAppBannerFixed!.didRotate(from: fromInterfaceOrientation)
         
-        super.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
+        super.didRotate(from: fromInterfaceOrientation)
     }
     
     @IBAction func showAd() {
@@ -92,13 +95,13 @@ class ViewController: UIViewController, STADelegateProtocol {
         ad hasn't been loaded yet.
         You can verify that by using the isReady method.
         */
-        startAppAdAutoLoad!.showAd()
+        startAppAdAutoLoad!.show()
     }
     
     @IBAction func loadShowAd() {
         // load StartApp ad with Automatic AdType and self view controller
         // as a delegation for callbacks
-        startAppAdLoadShow!.loadAdWithDelegate(self);
+        startAppAdLoadShow!.load(withDelegate: self);
     }
     
     /*
@@ -108,34 +111,34 @@ class ViewController: UIViewController, STADelegateProtocol {
     */
     
     // StartApp Ad loaded successfully
-    func didLoadAd(ad: STAAbstractAd) {
-        println("StartApp Ad had been loaded successfully")
-        startAppAdLoadShow!.showAd()
+    func didLoad(_ ad: STAAbstractAd) {
+        print("StartApp Ad had been loaded successfully", terminator: "")
+        startAppAdLoadShow!.show()
     }
     
     // StartApp Ad failed to load
-    func failedLoadAd(ad: STAAbstractAd, withError error: NSError) {
-        println("StartApp Ad had failed to load")
+    func failedLoad(_ ad: STAAbstractAd, withError error: Error) {
+        print("StartApp Ad had failed to load", terminator: "")
     }
     
     // StartApp Ad is being displayed
-    func didShowAd(ad: STAAbstractAd) {
-        println("StartApp Ad is being displayed")
+    func didShow(_ ad: STAAbstractAd) {
+        print("StartApp Ad is being displayed", terminator: "")
     }
     
     // StartApp Ad failed to display
-    func failedShowAd(ad: STAAbstractAd, withError error: NSError) {
-        println("StartApp Ad is failed to display")
+    func failedShow(_ ad: STAAbstractAd, withError error: Error) {
+        print("StartApp Ad is failed to display", terminator: "")
     }
     
     // StartApp Ad is being displayed
-    func didCloseAd(ad: STAAbstractAd) {
-        println("StartApp Ad was closed")
+    func didClose(_ ad: STAAbstractAd) {
+        print("StartApp Ad was closed", terminator: "")
     }
     
     // StartApp Ad is being displayed
-    func didClickAd(ad: STAAbstractAd) {
-        println("StartApp Ad was clicked")
+    func didClick(_ ad: STAAbstractAd) {
+        print("StartApp Ad was clicked", terminator: "")
     }
     
     override func didReceiveMemoryWarning() {
