@@ -27,7 +27,7 @@ class ViewController: UIViewController, STADelegateProtocol {
     /*
     Declaration of StartApp Banner view with automatic positioning
     */
-    var startAppBannerAuto: STABannerView?
+    var startAppBannerBottom: STABannerView?
     
     /*
     Declaration of StartApp Banner view with fixed positioning and size
@@ -39,6 +39,8 @@ class ViewController: UIViewController, STADelegateProtocol {
      */
     var startAppRewarded: STAStartAppAd?
 
+    @IBOutlet weak var btnFixedBannerSize: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -49,6 +51,8 @@ class ViewController: UIViewController, STADelegateProtocol {
         startAppAdAutoLoad = STAStartAppAd()
         startAppAdLoadShow = STAStartAppAd()
         startAppRewarded = STAStartAppAd()
+        
+        btnFixedBannerSize.setTitle((UIDevice.current.userInterfaceIdiom == .pad) ?"768x90":"320x50", for: UIControlState.normal)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -60,9 +64,9 @@ class ViewController: UIViewController, STADelegateProtocol {
         NOTE: replace the ApplicationID and the PublisherID with your own IDs
         */
         
-        if (startAppBannerAuto == nil) {
-            startAppBannerAuto = STABannerView(size: STA_AutoAdSize, autoOrigin: STAAdOrigin_Bottom, with: self.view, withDelegate: nil);
-            self.view.addSubview(startAppBannerAuto!)
+        if (startAppBannerBottom == nil) {
+            startAppBannerBottom = STABannerView(size: STA_AutoAdSize, autoOrigin: STAAdOrigin_Bottom, with: self.view, withDelegate: nil);
+            self.view.addSubview(startAppBannerBottom!)
         }
         
         /*
@@ -71,12 +75,7 @@ class ViewController: UIViewController, STADelegateProtocol {
         */
         
         if (startAppBannerFixed == nil) {
-            if (UIDevice.current.userInterfaceIdiom == .pad) {
-                startAppBannerFixed = STABannerView(size: STA_PortraitAdSize_768x90, origin: CGPoint(x: 0,y: 350), with: self.view, withDelegate: nil)
-            } else {
-                startAppBannerFixed = STABannerView(size: STA_PortraitAdSize_320x50, origin: CGPoint(x: 0,y: 350), with: self.view, withDelegate: nil)
-            }
-
+            startAppBannerFixed = STABannerView(size: STA_PortraitAdSize_320x50, origin: CGPoint(x: 0,y: 150), with: self.view, withDelegate: nil)
             self.view.addSubview(startAppBannerFixed!)
         }
  
@@ -85,7 +84,7 @@ class ViewController: UIViewController, STADelegateProtocol {
     // Rotating the banner for iOS less than 8.0
     override func  didRotate(from fromInterfaceOrientation: UIInterfaceOrientation)  {
         // notify StartApp auto Banner orientation change
-        startAppBannerAuto!.didRotate(from: fromInterfaceOrientation)
+        startAppBannerBottom!.didRotate(from: fromInterfaceOrientation)
         
         // notify StartApp fixed position Banner orientation change
         startAppBannerFixed!.didRotate(from: fromInterfaceOrientation)
@@ -110,6 +109,31 @@ class ViewController: UIViewController, STADelegateProtocol {
         startAppAdLoadShow!.load(withDelegate: self);
     }
     
+    @IBAction func loadShowRewardedVideo() {
+        // load StartApp rewarded video
+        startAppRewarded!.loadRewardedVideoAd(withDelegate: self);
+    }
+    
+    @IBAction func autoBannerSizeButtonTap(_ sender: Any) {
+        startAppBannerBottom?.setSTABannerSize(STA_AutoAdSize);
+    }
+    
+    @IBAction func fixedBannerSizeButtonTap(_ sender: Any) {
+        if (UIDevice.current.userInterfaceIdiom == .pad) {
+            startAppBannerBottom?.setSTABannerSize(STA_PortraitAdSize_768x90);
+        }
+        else {
+            startAppBannerBottom?.setSTABannerSize(STA_PortraitAdSize_320x50);
+        }
+    }
+    
+    @IBAction func mRecBannerSizeButtonTap(_ sender: Any) {
+        startAppBannerBottom?.setSTABannerSize(STA_MRecAdSize_300x250);
+    }
+    
+    @IBAction func coverBannerSizeButtonTap(_ sender: Any) {
+        startAppBannerBottom?.setSTABannerSize(STA_CoverAdSize);
+    }
     /*
     Implementation of the STADelegationProtocol.
     All methods here are optional and you can
@@ -159,11 +183,6 @@ class ViewController: UIViewController, STADelegateProtocol {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func loadShowRewardedVideo() {
-        // load StartApp rewarded video
-        startAppRewarded!.loadRewardedVideoAd(withDelegate: self);
     }
     
     // StartApp playing rewarded video has been completed
