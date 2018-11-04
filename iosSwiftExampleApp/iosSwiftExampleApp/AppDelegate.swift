@@ -13,24 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-    
-        // initialize the SDK with your appID and devID
-        let sdk: STAStartAppSDK = STAStartAppSDK.sharedInstance()
-        
-        sdk.appID = "yourAppId"
-        sdk.devID = "yourDeveloperId"
-                
-        sdk.preferences = STASDKPreferences.prefrences(withAge: 22, andGender: STAGender_Male)
-        
-        let splashPreferences : STASplashPreferences = STASplashPreferences()
-        splashPreferences.splashMode = STASplashModeTemplate
-        splashPreferences.splashTemplateTheme = STASplashTemplateThemeOcean;
-        splashPreferences.splashLoadingIndicatorType = STASplashLoadingIndicatorTypeDots;
-        splashPreferences.splashTemplateIconImageName = "StartAppIcon";
-        splashPreferences.splashTemplateAppName = "StartApp Example App";
-        
-        sdk.showSplashAd(with: splashPreferences)
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
 
         return true
     }

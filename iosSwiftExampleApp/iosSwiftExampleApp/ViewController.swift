@@ -15,14 +15,14 @@ class ViewController: UIViewController, STADelegateProtocol {
     for loading within the viewDidApear and displaying when
     clicking a button
     */
-    var startAppAdAutoLoad: STAStartAppAd?
+    lazy var startAppAdAutoLoad = STAStartAppAd()
     
     /*
     Declaration of STAStartAppAd which later on will be used
     for loading when user clicks on a button and showing the
     loaded ad when the ad was loaded with delegation
     */
-    var startAppAdLoadShow: STAStartAppAd?
+    lazy var startAppAdLoadShow = STAStartAppAd()
 
     /*
     Declaration of StartApp Banner view with automatic positioning
@@ -37,60 +37,140 @@ class ViewController: UIViewController, STADelegateProtocol {
     /*
      Declaration of StartApp Rewarded ad
      */
-    var startAppRewarded: STAStartAppAd?
-
-    @IBOutlet weak var btnFixedBannerSize: UIButton!
+    lazy var startAppRewarded = STAStartAppAd()
+    
+    /*
+     Initialize StartApp SDK with your appId
+     */
+    private func initStartAppSDK() {
+        // initialize the SDK with your appID and devID
+        guard let sdk = STAStartAppSDK.sharedInstance() else {
+            fatalError("StartAppSDK initialization failed!")
+        }
+        
+        if sdk.appID != nil {
+            // The sdk has already been initialized
+            return
+        }
+        
+        sdk.appID = "yourAppId"
+        sdk.devID = "yourDeveloperId"
+        sdk.preferences = STASDKPreferences.prefrences(withAge: 22, andGender: STAGender_Male)
+        
+        /*
+         load the StartApp auto interstitial ad
+         */
+        startAppAdAutoLoad?.load()
+        
+        /*
+         load the StartApp auto position banner, banner size will be assigned automatically by  StartApp
+         */
+        if (startAppBannerBottom == nil) {
+            startAppBannerBottom = STABannerView(
+                size: STA_AutoAdSize,
+                autoOrigin: STAAdOrigin_Bottom,
+                with: bottomContainerView,
+                withDelegate: nil);
+            
+            bottomContainerView.addSubview(startAppBannerBottom!)
+        }
+        
+        /*
+         load the StartApp fixed position banner - in (0, 200)
+         */
+        if (startAppBannerFixed == nil) {
+            let halfX = (view.bounds.width - 320) / 2
+            
+            startAppBannerFixed = STABannerView(
+                size: STA_PortraitAdSize_320x50,
+                origin: CGPoint(x: halfX, y: 250),
+                with: view, withDelegate: nil)
+            
+            view.addSubview(startAppBannerFixed!)
+        }
+    }
+    
+    /*
+     Also we recomend to show a splash screen ad in your app
+     */
+    private func showSplashAd() {
+        guard let sdk = STAStartAppSDK.sharedInstance() else {
+            fatalError("StartAppSDK initialization failed!")
+        }
+        
+        let splashPreferences : STASplashPreferences = STASplashPreferences()
+        splashPreferences.splashMode = STASplashModeTemplate
+        splashPreferences.splashTemplateTheme = STASplashTemplateThemeOcean;
+        splashPreferences.splashLoadingIndicatorType = STASplashLoadingIndicatorTypeDots;
+        splashPreferences.splashTemplateIconImageName = "StartAppIcon";
+        splashPreferences.splashTemplateAppName = "StartApp Example App";
+        
+        sdk.showSplashAd(with: splashPreferences)
+    }
+    
+    private func writePersonalizedAdsConsent(isGranted: Bool) {
+        guard let sdk = STAStartAppSDK.sharedInstance() else {
+            fatalError("StartAppSDK initialization failed!")
+        }
+        
+        sdk.setUserConsent(isGranted, forConsentType: "pas", withTimestamp: Int(Date().timeIntervalSince1970))
+        UserDefaults.standard.set(true, forKey: "gdpr_dialog_was_shown")
+    }
+    
+    private func initStartAppSdkIfGdprShown() {
+        if !UserDefaults.standard.bool(forKey: "gdpr_dialog_was_shown") {
+            return
+        }
+        
+        initStartAppSDK()
+        showSplashAd()
+    }
+    
+    private func initStartAppSdkIfGdprNotShown() {
+        if UserDefaults.standard.bool(forKey: "gdpr_dialog_was_shown") {
+            return
+        }
+        
+        performSegue(withIdentifier: "showGdprSegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dstController = segue.destination as? GdprViewController {
+            dstController.completionHandler = { isGranted in
+                self.writePersonalizedAdsConsent(isGranted: isGranted)
+                self.initStartAppSDK()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        /*
-        Init of the startapp interstitials
-        NOTE: replace the ApplicationID and the PublisherID with your own IDs
-        */
-        startAppAdAutoLoad = STAStartAppAd()
-        startAppAdLoadShow = STAStartAppAd()
-        startAppRewarded = STAStartAppAd()
         
-        btnFixedBannerSize.setTitle((UIDevice.current.userInterfaceIdiom == .pad) ?"768x90":"320x50", for: UIControlState.normal)
+        btnFixedBannerSize.setTitle((UIDevice.current.userInterfaceIdiom == .pad) ?"768x90":"320x50", for: UIControl.State.normal)
+        
+        initStartAppSdkIfGdprShown()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        startAppAdAutoLoad!.load()
         
-        /*
-        load the StartApp auto position banner, banner size will be assigned automatically by  StartApp
-        NOTE: replace the ApplicationID and the PublisherID with your own IDs
-        */
-        
-        if (startAppBannerBottom == nil) {
-            startAppBannerBottom = STABannerView(size: STA_AutoAdSize, autoOrigin: STAAdOrigin_Bottom, with: self.view, withDelegate: nil);
-            self.view.addSubview(startAppBannerBottom!)
-        }
-        
-        /*
-        load the StartApp fixed position banner - in (0, 200)
-        NOTE: replace the ApplicationID and the PublisherID with your own IDs
-        */
-        
-        if (startAppBannerFixed == nil) {
-            startAppBannerFixed = STABannerView(size: STA_PortraitAdSize_320x50, origin: CGPoint(x: 0,y: 150), with: self.view, withDelegate: nil)
-            self.view.addSubview(startAppBannerFixed!)
-        }
- 
+        initStartAppSdkIfGdprNotShown()
     }
 
     // Rotating the banner for iOS less than 8.0
     override func  didRotate(from fromInterfaceOrientation: UIInterfaceOrientation)  {
         // notify StartApp auto Banner orientation change
-        startAppBannerBottom!.didRotate(from: fromInterfaceOrientation)
+        startAppBannerBottom?.didRotate(from: fromInterfaceOrientation)
         
         // notify StartApp fixed position Banner orientation change
-        startAppBannerFixed!.didRotate(from: fromInterfaceOrientation)
+        startAppBannerFixed?.didRotate(from: fromInterfaceOrientation)
         
         super.didRotate(from: fromInterfaceOrientation)
     }
+
+    
+    @IBOutlet weak var bottomContainerView: UIView!
+    @IBOutlet weak var btnFixedBannerSize: UIButton!
     
     @IBAction func showAd() {
         /*
@@ -100,18 +180,22 @@ class ViewController: UIViewController, STADelegateProtocol {
         ad hasn't been loaded yet.
         You can verify that by using the isReady method.
         */
-        startAppAdAutoLoad!.show()
+        startAppAdAutoLoad?.show()
     }
     
     @IBAction func loadShowAd() {
         // load StartApp ad with Automatic AdType and self view controller
         // as a delegation for callbacks
-        startAppAdLoadShow!.load(withDelegate: self);
+        startAppAdLoadShow?.load(withDelegate: self);
     }
     
     @IBAction func loadShowRewardedVideo() {
         // load StartApp rewarded video
-        startAppRewarded!.loadRewardedVideoAd(withDelegate: self);
+        startAppRewarded?.loadRewardedVideoAd(withDelegate: self);
+    }
+    
+    @IBAction func showPersonalizedAds(_ sender: UIButton) {
+        performSegue(withIdentifier: "showGdprSegue", sender: nil)
     }
     
     @IBAction func autoBannerSizeButtonTap(_ sender: Any) {
@@ -145,9 +229,9 @@ class ViewController: UIViewController, STADelegateProtocol {
         print("StartApp Ad had been loaded successfully", terminator: "")
         
         if (ad == startAppAdLoadShow) {
-            startAppAdLoadShow!.show()
+            startAppAdLoadShow?.show()
         } else if (ad == startAppRewarded) {
-            startAppRewarded!.show()
+            startAppRewarded?.show()
         }
     }
     

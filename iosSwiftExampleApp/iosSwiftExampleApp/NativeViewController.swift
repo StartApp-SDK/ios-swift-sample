@@ -11,7 +11,7 @@ import UIKit
 class NativeViewController: UIViewController, STADelegateProtocol {
 
     /* Declaration of STAStartAppNativeAd which will load and store all the ads we intend to display */
-    var startAppNativeAd: STAStartAppNativeAd?
+    lazy var startAppNativeAd = STAStartAppNativeAd()
 
     /* Specific details about each ad */
     var adDetails: STANativeAdDetails?
@@ -20,14 +20,6 @@ class NativeViewController: UIViewController, STADelegateProtocol {
     @IBOutlet weak var adImageView: UIImageView!
     @IBOutlet weak var clickAdButton: UIButton!
     @IBOutlet weak var adTitle: UILabel!
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        startAppNativeAd = STAStartAppNativeAd()
-        // Do any additional setup after loading the view.
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -35,7 +27,6 @@ class NativeViewController: UIViewController, STADelegateProtocol {
     }
     
     @IBAction func loadAd(_ sender: AnyObject) {
-
         // Set some preferences
         let pref: STANativeAdPreferences = STANativeAdPreferences()
         pref.adsNumber = 1 // Request only one ad
@@ -43,7 +34,7 @@ class NativeViewController: UIViewController, STADelegateProtocol {
         pref.bitmapSize = SIZE_150X150
 
         // Loading the ad
-        startAppNativeAd!.load(withDelegate: self, with: pref)
+        startAppNativeAd?.load(withDelegate: self, with: pref)
     }
     
     // Delegate method to know when the ad finished loading    
@@ -56,11 +47,11 @@ class NativeViewController: UIViewController, STADelegateProtocol {
     // StartApp Ad failed to load
     func failedLoad(_ ad: STAAbstractAd, withError error: Error) {
         print("StartApp Native Ad \(ad) had failed to load \(error)")
+        showLoadAdFailedAlert()
     }
     
     @IBAction func showAd(_ sender: AnyObject) {
         // Show the ad only if it has been loaded
-        
         if (startAppNativeAd?.isReady() == true) {
             // Take the first ad, which in default can be only one.
             if let adDetailsObject: STANativeAdDetails = startAppNativeAd?.adsDetails.object(at: 0) as? STANativeAdDetails {
@@ -68,16 +59,26 @@ class NativeViewController: UIViewController, STADelegateProtocol {
                 adDetails = adDetailsObject
                 
                 // Send the impression
-                adDetails!.sendImpression()
+                adDetails?.sendImpression()
                 
                 clickAdButton.isHidden = false
-                adTitle.text = adDetails!.title
+                adTitle.text = adDetails?.title
                 adTitle.isHidden = false
-                adImageView.image = adDetails!.imageBitmap
+                adImageView.image = adDetails?.imageBitmap
             }
         } else {
-            let alertView : UIAlertView = UIAlertView(title: "Ad is not loaded", message: "Native ad hasn't been loaded so we don't need to show the ad", delegate: self, cancelButtonTitle: "OK")
+            showLoadAdFailedAlert()
         }
+    }
+    
+    private func showLoadAdFailedAlert() {
+        let alert = UIAlertController(
+            title: "Ad is not loaded",
+            message: "Native ad hasn't been loaded so we don't need to show the ad",
+            preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func clickAd(_ sender: AnyObject) {
