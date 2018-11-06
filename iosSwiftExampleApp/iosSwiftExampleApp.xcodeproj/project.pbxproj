@@ -26,6 +26,7 @@
 		49329C55218C938600069B07 /* GdprViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GdprViewController.swift; sourceTree = "<group>"; };
 		49329C5D218E1F8500069B07 /* gotham_book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gotham_book.ttf; sourceTree = "<group>"; };
 		49329C5F218E20E800069B07 /* gotham_medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gotham_medium.ttf; sourceTree = "<group>"; };
+		49329C7F2190A52A00069B07 /* iosSwiftExampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iosSwiftExampleApp.entitlements; sourceTree = "<group>"; };
 		505DF16619449D0F00FE7E73 /* iosSwiftExampleApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iosSwiftExampleApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		506C10E719407F840015E07A /* iosSwiftExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosSwiftExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		506C10EB19407F840015E07A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -79,6 +80,7 @@
 		506C10E919407F840015E07A /* iosSwiftExampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				49329C7F2190A52A00069B07 /* iosSwiftExampleApp.entitlements */,
 				49329C5C218E1F8500069B07 /* fonts */,
 				505DF16619449D0F00FE7E73 /* iosSwiftExampleApp-Bridging-Header.h */,
 				506C10EC19407F840015E07A /* AppDelegate.swift */,
@@ -153,8 +155,12 @@
 				TargetAttributes = {
 					506C10E619407F840015E07A = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 33VM6V4F88;
 						LastSwiftMigration = 1010;
 						SystemCapabilities = {
+							com.apple.AccessWiFi = {
+								enabled = 1;
+							};
 							com.apple.InAppPurchase = {
 								enabled = 0;
 							};
@@ -334,6 +340,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = iosSwiftExampleApp/iosSwiftExampleApp.entitlements;
+				DEVELOPMENT_TEAM = 33VM6V4F88;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -357,6 +365,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = iosSwiftExampleApp/iosSwiftExampleApp.entitlements;
+				DEVELOPMENT_TEAM = 33VM6V4F88;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
