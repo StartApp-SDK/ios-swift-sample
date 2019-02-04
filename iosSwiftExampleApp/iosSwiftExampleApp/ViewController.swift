@@ -66,25 +66,18 @@ class ViewController: UIViewController, STADelegateProtocol {
          load the StartApp auto position banner, banner size will be assigned automatically by  StartApp
          */
         if (startAppBannerBottom == nil) {
-            startAppBannerBottom = STABannerView(
-                size: STA_AutoAdSize,
-                autoOrigin: STAAdOrigin_Bottom,
-                with: bottomContainerView,
-                withDelegate: nil);
+            startAppBannerBottom = STABannerView(size: STA_AutoAdSize, autoOrigin: STAAdOrigin_Bottom, withDelegate: nil);
             
-            bottomContainerView.addSubview(startAppBannerBottom!)
+            view.addSubview(startAppBannerBottom!)
         }
         
         /*
          load the StartApp fixed position banner - in (0, 200)
          */
         if (startAppBannerFixed == nil) {
-            let halfX = 0.5 * (view.bounds.width - 320)
+            let halfX = (view.bounds.width - 320) / 2
             
-            startAppBannerFixed = STABannerView(
-                size: STA_PortraitAdSize_320x50,
-                origin: CGPoint(x: halfX, y: 200),
-                with: view, withDelegate: nil)
+            startAppBannerFixed = STABannerView(size: STA_PortraitAdSize_320x50, origin: CGPoint(x: halfX, y: 220), withDelegate: nil)
             
             view.addSubview(startAppBannerFixed!)
         }
@@ -136,9 +129,9 @@ class ViewController: UIViewController, STADelegateProtocol {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dstController = segue.destination as? GdprViewController {
-            dstController.completionHandler = {
+            dstController.completionHandler = { isGranted in
+                self.writePersonalizedAdsConsent(isGranted: isGranted)
                 self.initStartAppSDK()
-                self.writePersonalizedAdsConsent(isGranted: $0)
             }
         }
     }
@@ -146,9 +139,7 @@ class ViewController: UIViewController, STADelegateProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        btnFixedBannerSize.setTitle(
-            (UIDevice.current.userInterfaceIdiom == .pad) ? "768x90" : "320x50",
-            for: UIControl.State.normal)
+        btnFixedBannerSize.setTitle((UIDevice.current.userInterfaceIdiom == .pad) ?"768x90":"320x50", for: UIControl.State.normal)
         
         initStartAppSdkIfGdprShown()
     }
@@ -159,17 +150,6 @@ class ViewController: UIViewController, STADelegateProtocol {
         initStartAppSdkIfGdprNotShown()
     }
     
-    override func viewWillTransition(to size: CGSize,
-                                     with coordinator: UIViewControllerTransitionCoordinator) {
-        
-        // notify StartApp auto Banner orientation change
-        startAppBannerBottom?.viewWillTransition(to: size, with: coordinator)
-        // notify StartApp fixed position Banner orientation change
-        startAppBannerFixed?.viewWillTransition(to: size, with: coordinator)
-    }
-
-    
-    @IBOutlet weak var bottomContainerView: UIView!
     @IBOutlet weak var btnFixedBannerSize: UIButton!
     
     @IBAction func showAd() {
@@ -194,6 +174,10 @@ class ViewController: UIViewController, STADelegateProtocol {
         startAppRewarded?.loadRewardedVideoAd(withDelegate: self);
     }
     
+    @IBAction func showPersonalizedAds(_ sender: UIButton) {
+        performSegue(withIdentifier: "showGdprSegue", sender: nil)
+    }
+    
     @IBAction func autoBannerSizeButtonTap(_ sender: Any) {
         startAppBannerBottom?.setSTABannerSize(STA_AutoAdSize);
     }
@@ -201,7 +185,8 @@ class ViewController: UIViewController, STADelegateProtocol {
     @IBAction func fixedBannerSizeButtonTap(_ sender: Any) {
         if (UIDevice.current.userInterfaceIdiom == .pad) {
             startAppBannerBottom?.setSTABannerSize(STA_PortraitAdSize_768x90);
-        } else {
+        }
+        else {
             startAppBannerBottom?.setSTABannerSize(STA_PortraitAdSize_320x50);
         }
     }
