@@ -30,10 +30,11 @@ class NativeViewController: UIViewController, STADelegateProtocol, UITableViewDe
         let pref: STANativeAdPreferences = STANativeAdPreferences()
         pref.adsNumber = 10 // Request 10 ads
         pref.autoBitmapDownload = true // Download image
-        pref.bitmapSize = SIZE_100X100
+        pref.primaryImageSize = STANativeAdBitmapSize.SIZE_100X100
+        pref.secondaryImageSize = STANativeAdBitmapSize.SIZE_72X72
 
         // Loading the ad
-        startAppNativeAd?.load(withDelegate: self, with: pref)
+        startAppNativeAd.load(withDelegate: self, with: pref)
     }
     
     @IBAction func dismiss(_ sender: AnyObject) {
@@ -68,10 +69,7 @@ class NativeViewController: UIViewController, STADelegateProtocol, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let amountOfAdsLoaded = startAppNativeAd?.adsDetails.count {
-            return amountOfAdsLoaded * kAdCellsInterval
-        }
-        return 0
+        return startAppNativeAd.adsDetails.count * kAdCellsInterval
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,7 +83,7 @@ class NativeViewController: UIViewController, STADelegateProtocol, UITableViewDe
         }
         if isAdCell {
             let adIndex = indexPath.row / kAdCellsInterval
-            let adDetails:STANativeAdDetails = startAppNativeAd?.adsDetails[adIndex] as! STANativeAdDetails
+            let adDetails:STANativeAdDetails = startAppNativeAd.adsDetails[adIndex] as! STANativeAdDetails
             cell?.textLabel?.text = adDetails.title
             cell?.textLabel?.numberOfLines = 2
             cell?.imageView?.image = adDetails.imageBitmap
