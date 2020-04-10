@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, STADelegateProtocol {
+class ViewController: UIViewController, STADelegateProtocol, STABannerDelegateProtocol {
     
     /*
     Declaration of STAStartAppAd which later on will be used
@@ -66,7 +66,7 @@ class ViewController: UIViewController, STADelegateProtocol {
          load the StartApp auto position banner, banner size will be assigned automatically by  StartApp
          */
         if (startAppBannerBottom == nil) {
-            startAppBannerBottom = STABannerView(size: STA_AutoAdSize, autoOrigin: STAAdOrigin_Bottom, withDelegate: nil);
+            startAppBannerBottom = STABannerView(size: STA_AutoAdSize, autoOrigin: STAAdOrigin_Bottom, withDelegate: self);
             
             view.addSubview(startAppBannerBottom!)
         }
@@ -77,7 +77,7 @@ class ViewController: UIViewController, STADelegateProtocol {
         if (startAppBannerFixed == nil) {
             let halfX = (view.bounds.width - 320) / 2
             
-            startAppBannerFixed = STABannerView(size: STA_PortraitAdSize_320x50, origin: CGPoint(x: halfX, y: 220), withDelegate: nil)
+            startAppBannerFixed = STABannerView(size: STA_PortraitAdSize_320x50, origin: CGPoint(x: halfX, y: 220), withDelegate: self)
             
             view.addSubview(startAppBannerFixed!)
         }
@@ -166,12 +166,12 @@ class ViewController: UIViewController, STADelegateProtocol {
     @IBAction func loadShowAd() {
         // load StartApp ad with Automatic AdType and self view controller
         // as a delegation for callbacks
-        startAppAdLoadShow?.load(withDelegate: self);
+        startAppAdLoadShow?.load(withDelegate: self)
     }
     
     @IBAction func loadShowRewardedVideo() {
         // load StartApp rewarded video
-        startAppRewarded?.loadRewardedVideoAd(withDelegate: self);
+        startAppRewarded?.loadRewardedVideoAd(withDelegate: self)
     }
     
     @IBAction func showPersonalizedAds(_ sender: UIButton) {
@@ -179,7 +179,7 @@ class ViewController: UIViewController, STADelegateProtocol {
     }
     
     @IBAction func autoBannerSizeButtonTap(_ sender: Any) {
-        startAppBannerBottom?.setSTABannerSize(STA_AutoAdSize);
+        startAppBannerBottom?.setSTABannerSize(STA_AutoAdSize)
     }
     
     @IBAction func fixedBannerSizeButtonTap(_ sender: Any) {
@@ -244,14 +244,21 @@ class ViewController: UIViewController, STADelegateProtocol {
         print("StartApp Ad was clicked", terminator: "")
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     // StartApp playing rewarded video has been completed
     func didCompleteVideo(_ ad: STAAbstractAd) {
         print("StartApp rewarded video had been completed", terminator: "")
+    }
+    
+    func didDisplayBannerAd(_ banner: STABannerView!) {
+        print("StartApp banner did display", terminator:"");
+    }
+    
+    func didClickBannerAd(_ banner: STABannerView!) {
+        print("StartApp banner was clicked", terminator:"");
+    }
+    
+    func failedLoadBannerAd(_ banner: STABannerView!, withError error: Error!) {
+        print("StartApp banner failed to load with error", error.localizedDescription, terminator:"");
     }
 }
 
