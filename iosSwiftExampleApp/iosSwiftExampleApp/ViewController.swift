@@ -101,39 +101,9 @@ class ViewController: UIViewController, STADelegateProtocol, STABannerDelegatePr
         sdk.showSplashAd(with: splashPreferences)
     }
     
-    private func writePersonalizedAdsConsent(isGranted: Bool) {
-        guard let sdk = STAStartAppSDK.sharedInstance() else {
-            fatalError("StartAppSDK initialization failed!")
-        }
-        
-        sdk.setUserConsent(isGranted, forConsentType: "pas", withTimestamp: Int(Date().timeIntervalSince1970))
-        UserDefaults.standard.set(true, forKey: "gdpr_dialog_was_shown")
-    }
-    
-    private func initStartAppSdkIfGdprShown() {
-        if !UserDefaults.standard.bool(forKey: "gdpr_dialog_was_shown") {
-            return
-        }
-        
+    private func initStartAppSdk() {
         initStartAppSDK()
         showSplashAd()
-    }
-    
-    private func initStartAppSdkIfGdprNotShown() {
-        if UserDefaults.standard.bool(forKey: "gdpr_dialog_was_shown") {
-            return
-        }
-        
-        performSegue(withIdentifier: "showGdprSegue", sender: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dstController = segue.destination as? GdprViewController {
-            dstController.completionHandler = { isGranted in
-                self.writePersonalizedAdsConsent(isGranted: isGranted)
-                self.initStartAppSDK()
-            }
-        }
     }
     
     override func viewDidLoad() {
@@ -141,13 +111,7 @@ class ViewController: UIViewController, STADelegateProtocol, STABannerDelegatePr
         
         btnFixedBannerSize.setTitle((UIDevice.current.userInterfaceIdiom == .pad) ?"768x90":"320x50", for: UIControl.State.normal)
         
-        initStartAppSdkIfGdprShown()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        initStartAppSdkIfGdprNotShown()
+        initStartAppSdk()
     }
     
     @IBOutlet weak var btnFixedBannerSize: UIButton!

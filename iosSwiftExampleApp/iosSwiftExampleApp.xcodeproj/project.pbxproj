@@ -10,7 +10,6 @@
 		1289117E81A8E707B9760BF9 /* libPods-iosSwiftExampleApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86FED9BE7DC4A3AED0AE92DE /* libPods-iosSwiftExampleApp.a */; };
 		3E61670120889AB800108776 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E61670020889AB800108776 /* Main.storyboard */; };
 		49329C54218B493100069B07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49329C53218B493100069B07 /* LaunchScreen.storyboard */; };
-		49329C56218C938600069B07 /* GdprViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49329C55218C938600069B07 /* GdprViewController.swift */; };
 		49329C5E218E1F8500069B07 /* gotham_book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49329C5D218E1F8500069B07 /* gotham_book.ttf */; };
 		49329C60218E20E800069B07 /* gotham_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49329C5F218E20E800069B07 /* gotham_medium.ttf */; };
 		506C10ED19407F840015E07A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506C10EC19407F840015E07A /* AppDelegate.swift */; };
@@ -23,7 +22,6 @@
 		3D92072FB25B21B597029B8B /* Pods-iosSwiftExampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosSwiftExampleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-iosSwiftExampleApp/Pods-iosSwiftExampleApp.release.xcconfig"; sourceTree = "<group>"; };
 		3E61670020889AB800108776 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		49329C53218B493100069B07 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		49329C55218C938600069B07 /* GdprViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GdprViewController.swift; sourceTree = "<group>"; };
 		49329C5D218E1F8500069B07 /* gotham_book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gotham_book.ttf; sourceTree = "<group>"; };
 		49329C5F218E20E800069B07 /* gotham_medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gotham_medium.ttf; sourceTree = "<group>"; };
 		49329C7F2190A52A00069B07 /* iosSwiftExampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iosSwiftExampleApp.entitlements; sourceTree = "<group>"; };
@@ -85,7 +83,6 @@
 				505DF16619449D0F00FE7E73 /* iosSwiftExampleApp-Bridging-Header.h */,
 				506C10EC19407F840015E07A /* AppDelegate.swift */,
 				509C68061A52A7B3003ED178 /* NativeViewController.swift */,
-				49329C55218C938600069B07 /* GdprViewController.swift */,
 				506C10EE19407F840015E07A /* ViewController.swift */,
 				506C10F319407F840015E07A /* Images.xcassets */,
 				3E61670020889AB800108776 /* Main.storyboard */,
@@ -248,7 +245,6 @@
 				509C68071A52A7B3003ED178 /* NativeViewController.swift in Sources */,
 				506C10EF19407F840015E07A /* ViewController.swift in Sources */,
 				506C10ED19407F840015E07A /* AppDelegate.swift in Sources */,
-				49329C56218C938600069B07 /* GdprViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
