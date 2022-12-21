@@ -55,6 +55,7 @@ class ViewController: UIViewController, STADelegateProtocol, STABannerDelegatePr
         
         sdk.appID = "yourAppId"
         sdk.devID = "yourDeveloperId"
+        sdk.testAdsEnabled = true
         sdk.preferences = STASDKPreferences.prefrences(withAge: 22, andGender: STAGender_Male)
         
         /*
@@ -213,15 +214,15 @@ class ViewController: UIViewController, STADelegateProtocol, STABannerDelegatePr
         print("StartApp rewarded video had been completed", terminator: "")
     }
     
-    func didDisplayBannerAd(_ banner: STABannerView!) {
+    func didDisplayBannerAd(_ : STABannerViewBase) {
         print("StartApp banner did display", terminator:"");
     }
     
-    func didClickBannerAd(_ banner: STABannerView!) {
+    func didClickBannerAd(_ : STABannerViewBase) {
         print("StartApp banner was clicked", terminator:"");
     }
     
-    func failedLoadBannerAd(_ banner: STABannerView!, withError error: Error!) {
+    func failedLoadBannerAd(_ : STABannerViewBase, withError error: Error) {
         print("StartApp banner failed to load with error", error.localizedDescription, terminator:"");
     }
 }

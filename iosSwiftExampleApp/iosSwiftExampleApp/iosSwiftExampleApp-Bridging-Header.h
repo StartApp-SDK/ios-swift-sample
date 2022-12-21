@@ -8,4 +8,4 @@
 
 /* Import of StartApp SDK header files */
 
-#import <StartApp/StartApp.h>
+@import StartApp;
