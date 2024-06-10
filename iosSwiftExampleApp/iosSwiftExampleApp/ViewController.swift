@@ -52,7 +52,7 @@ class ViewController: UIViewController, STADelegateProtocol, STABannerDelegatePr
             // The sdk has already been initialized
             return
         }
-        
+#warning("This is a demo ProductId, in your own app please make sure to use your own ProductId")
         sdk.appID = "yourAppId"
         sdk.devID = "yourDeveloperId"
         sdk.testAdsEnabled = true
