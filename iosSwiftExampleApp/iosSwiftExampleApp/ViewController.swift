@@ -84,27 +84,8 @@ class ViewController: UIViewController, STADelegateProtocol, STABannerDelegatePr
         }
     }
     
-    /*
-     Also we recomend to show a splash screen ad in your app
-     */
-    private func showSplashAd() {
-        guard let sdk = STAStartAppSDK.sharedInstance() else {
-            fatalError("StartAppSDK initialization failed!")
-        }
-        
-        let splashPreferences : STASplashPreferences = STASplashPreferences()
-        splashPreferences.splashMode = STASplashModeTemplate
-        splashPreferences.splashTemplateTheme = STASplashTemplateThemeOcean;
-        splashPreferences.splashLoadingIndicatorType = STASplashLoadingIndicatorTypeDots;
-        splashPreferences.splashTemplateIconImageName = "StartAppIcon";
-        splashPreferences.splashTemplateAppName = "StartApp Example App";
-        
-        sdk.showSplashAd(with: splashPreferences)
-    }
-    
     private func initStartAppSdk() {
         initStartAppSDK()
-        showSplashAd()
     }
     
     override func viewDidLoad() {
